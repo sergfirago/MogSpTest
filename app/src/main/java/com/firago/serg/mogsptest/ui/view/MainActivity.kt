@@ -58,14 +58,14 @@ class MainActivity : AppCompatActivity() {
                     textErrorMessage.setText(data.errorMessage)
                     title = data.title
                 }
-                StateActivity.OLD -> {
+                StateActivity.OLD_NEWS -> {
                     if (!model.warningAlreadyShown) {
                         showWarningOldNews()
                         model.warningAlreadyShown = true
                     }
                     showNews(data)
                 }
-                StateActivity.TODAY ->{
+                StateActivity.TODAY_NEWS ->{
                     showNews(data)
                 }
             }

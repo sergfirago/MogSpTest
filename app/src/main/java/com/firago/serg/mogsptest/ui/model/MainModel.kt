@@ -7,7 +7,7 @@ import com.firago.serg.mogsptest.domain.Repository
 import io.reactivex.disposables.Disposable
 
 enum class StateActivity{
-    OLD, ERROR, LOAD, TODAY
+    OLD_NEWS, ERROR, LOAD, TODAY_NEWS
 }
 
 interface Today {
@@ -40,7 +40,7 @@ class MainModel(val repository: Repository, private val today: Today): ViewModel
         disposable?.dispose()
         disposable = repository.getNewsflashPage()
                 .subscribe({ htmlResponse ->
-                    val state = if (todayNews(htmlResponse)) StateActivity.TODAY else StateActivity.OLD
+                    val state = if (todayNews(htmlResponse)) StateActivity.TODAY_NEWS else StateActivity.OLD_NEWS
                     data.value = ViewData(
                             htmlArticle = htmlResponse.html,
                             title = title(htmlResponse),

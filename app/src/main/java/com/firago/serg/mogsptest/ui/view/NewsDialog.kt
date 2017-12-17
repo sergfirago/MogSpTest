@@ -11,7 +11,7 @@ class NewsDialog: DialogFragment() {
         val builder = AlertDialog.Builder(activity)
         val inflater = activity.layoutInflater
         builder.setView(inflater.inflate(R.layout.news_dialog, null))
-                .setPositiveButton("Ok"){_,_-> }
+                .setPositiveButton("Ok",{_,_->})
 
         return builder.create()
     }

@@ -10,8 +10,8 @@ import org.jsoup.Jsoup
  *  date - date of newsflash
  *
  *  link - link to newsflash page
- *  @param html text
- *  @return NewflashUrl to latest news
+ *  @param firstPage is html text
+ *  @return NewsflashUrl to latest news
  *  @throws InvalidHtmlContent
  */
 fun getNewsflashUrl(firstPage: String): NewsflashUrl {
