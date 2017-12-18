@@ -12,7 +12,7 @@ import org.jsoup.Jsoup
  *  link - link to newsflash page
  *  @param firstPage is html text
  *  @return NewsflashUrl to latest news
- *  @throws InvalidHtmlContent
+ *  @throws InvalidHtmlContentException
  */
 fun getNewsflashUrl(firstPage: String): NewsflashUrl {
     try {
@@ -21,7 +21,7 @@ fun getNewsflashUrl(firstPage: String): NewsflashUrl {
         val url = newsElem.selectFirst("a[href]").attr("abs:href")
         return NewsflashUrl(date, url)
     }catch (e :Exception){
-        throw InvalidHtmlContent().initCause(e)
+        throw InvalidHtmlContentException().initCause(e)
     }
 }
 
@@ -29,14 +29,14 @@ fun getNewsflashUrl(firstPage: String): NewsflashUrl {
  * Return html page with only newsflash
  * @param raw html page text
  * @return html
- * @throws InvalidHtmlContent
+ * @throws InvalidHtmlContentException
  */
 fun withoutRefuse(html: String): String {
 
     val document = Jsoup.parse(html)
     val article = document.select("article").html()
     val head = document.select("head").html()
-    if (article.isEmpty()) throw InvalidHtmlContent()
+    if (article.isEmpty()) throw InvalidHtmlContentException()
 
     return buildHtmlPage(head, article)
 }
@@ -54,4 +54,3 @@ private fun buildHtmlPage(head: String, article: String):String{
     return pageTemplate
 }
 
-class InvalidHtmlContent : Throwable()

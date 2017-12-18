@@ -27,7 +27,7 @@ class ParserKtTest {
         assertEquals("http://mogsp.by/news/meropriyatiya",link)
     }
 
-    @Test(expected = InvalidHtmlContent::class)
+    @Test(expected = InvalidHtmlContentException::class)
     fun testGetNewsflashUrlWithoutDataThrowException() {
         val html = """<html xmlns="http://www.w3.org/1999/xhtml">
                     <head>
@@ -43,7 +43,7 @@ class ParserKtTest {
                     </html>"""
             getNewsflashUrl(html)
     }
-    @Test(expected = InvalidHtmlContent::class)
+    @Test(expected = InvalidHtmlContentException::class)
     fun testGetNewsflashUrlWithoutLinkThrowException() {
         val html = """<html xmlns="http://www.w3.org/1999/xhtml">
                     <head>

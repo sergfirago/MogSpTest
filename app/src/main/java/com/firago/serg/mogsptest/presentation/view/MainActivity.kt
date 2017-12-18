@@ -1,4 +1,4 @@
-package com.firago.serg.mogsptest.ui.view
+package com.firago.serg.mogsptest.presentation.view
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -15,7 +15,7 @@ import android.widget.TextView
 import com.firago.serg.mogsptest.App
 import com.firago.serg.mogsptest.R
 import com.firago.serg.mogsptest.domain.Repository
-import com.firago.serg.mogsptest.ui.model.*
+import com.firago.serg.mogsptest.presentation.model.*
 import java.util.*
 import javax.inject.Inject
 

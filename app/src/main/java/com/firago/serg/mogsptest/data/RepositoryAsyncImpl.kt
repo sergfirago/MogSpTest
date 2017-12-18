@@ -24,10 +24,13 @@ class RepositoryAsyncImpl(private val client: NetClient, private val linkPageUrl
         return Observable
                 .fromCallable { client.get(linkPageUrl)}
                 .map { page -> getNewsflashUrl(page) }
-                .map { newsflashUrl -> NewsflashPage(newsflashUrl.date, client.get(newsflashUrl.url)) }
-                .map { newsflashPage -> newsflashPage.copy(html = withoutRefuse(newsflashPage.html)) }
+                .map { newsflashUrl -> newsflashUrl.getPage(client) }
+                .map { newsflashPage -> newsflashPage.withoutRefuse() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
 data class NewsflashUrl(val date: String, val url: String)
+
+fun NewsflashUrl.getPage(client: NetClient): NewsflashPage = NewsflashPage(date, client.get(url))
+fun NewsflashPage.withoutRefuse() = copy(html = withoutRefuse(html))

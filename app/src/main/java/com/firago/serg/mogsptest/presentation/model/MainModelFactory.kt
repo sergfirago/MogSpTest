@@ -1,4 +1,4 @@
-package com.firago.serg.mogsptest.ui.model
+package com.firago.serg.mogsptest.presentation.model
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

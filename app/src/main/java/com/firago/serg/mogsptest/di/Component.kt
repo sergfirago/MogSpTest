@@ -1,6 +1,6 @@
 package com.firago.serg.mogsptest.di
 
-import com.firago.serg.mogsptest.ui.view.MainActivity
+import com.firago.serg.mogsptest.presentation.view.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 

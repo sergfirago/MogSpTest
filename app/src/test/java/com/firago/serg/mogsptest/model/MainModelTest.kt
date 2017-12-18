@@ -4,10 +4,10 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import com.firago.serg.mogsptest.domain.NewsflashPage
 import com.firago.serg.mogsptest.domain.Repository
-import com.firago.serg.mogsptest.ui.model.MainModel
-import com.firago.serg.mogsptest.ui.model.StateActivity
-import com.firago.serg.mogsptest.ui.model.Today
-import com.firago.serg.mogsptest.ui.model.ViewData
+import com.firago.serg.mogsptest.presentation.model.MainModel
+import com.firago.serg.mogsptest.presentation.model.StateActivity
+import com.firago.serg.mogsptest.presentation.model.Today
+import com.firago.serg.mogsptest.presentation.model.ViewData
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.stub
@@ -57,7 +57,7 @@ class MainModelTest {
         val dataObserver = mock<Observer<ViewData>>()
         model.data.observeForever(dataObserver)
         verify(dataObserver).onChanged(
-                ViewData(data.html, "Новость за date", null, StateActivity.OLD))
+                ViewData(data.html, "Новость за date", null, StateActivity.OLD_NEWS))
     }
 
     @Test
@@ -70,6 +70,6 @@ class MainModelTest {
         val dataObserver = mock<Observer<ViewData>>()
         model.data.observeForever(dataObserver)
         verify(dataObserver).onChanged(
-                ViewData(data.html, "Сегодняшняя новость", null, StateActivity.TODAY))
+                ViewData(data.html, "Сегодняшняя новость", null, StateActivity.TODAY_NEWS))
     }
 }

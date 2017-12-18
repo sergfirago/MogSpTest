@@ -1,4 +1,4 @@
-package com.firago.serg.mogsptest.ui.view
+package com.firago.serg.mogsptest.presentation.view
 
 import android.app.Dialog
 import android.os.Bundle

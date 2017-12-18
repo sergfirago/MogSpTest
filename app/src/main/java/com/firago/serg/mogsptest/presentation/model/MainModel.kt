@@ -1,4 +1,4 @@
-package com.firago.serg.mogsptest.ui.model
+package com.firago.serg.mogsptest.presentation.model
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
@@ -27,7 +27,7 @@ class MainModel(val repository: Repository, private val today: Today): ViewModel
         refresh()
     }
 
-    fun todayNews(htmlResponse: NewsflashPage) = htmlResponse.date == today.date()
+    private fun todayNews(htmlResponse: NewsflashPage) = htmlResponse.date == today.date()
     private fun title(htmlResponse: NewsflashPage): String {
         return if (todayNews(htmlResponse)) "Сегодняшняя новость"
         else "Новость за ${htmlResponse.date}"
@@ -59,5 +59,3 @@ class MainModel(val repository: Repository, private val today: Today): ViewModel
 
     var warningAlreadyShown: Boolean = false
 }
-
-//fun today():String = DateFormat.format("dd.MM.yyyy", Date()).toString()

@@ -17,12 +17,9 @@ class NetClientImpl: NetClient {
 }
 
 
-
-
-
 private fun OkHttpClient.get(url :String): String{
     val request = Request.Builder().url(url).build()
     val response = this.newCall(request).execute()
-    if (!response.isSuccessful) throw  UnsuccessfulResponse(response.message()).initCause(IOException())
+    if (!response.isSuccessful) throw  UnsuccessfulResponseException(response.message()).initCause(IOException())
     return response.body()!!.string()
 }
